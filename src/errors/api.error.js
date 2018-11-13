@@ -1,5 +1,8 @@
 const httpStatus = require('http-status');
 
+/**
+ * Error subclass that handles a response's status and a isPublic flag.
+ */
 class ApiError extends Error {
 
   constructor(message, status, isPublic = false) {

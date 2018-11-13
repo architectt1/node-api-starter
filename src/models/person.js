@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { setupSchema } = require('../helpers/model.helper');
 
 const Schema = mongoose.Schema;
 
@@ -8,4 +9,4 @@ const PersonSchema = new Schema({
   birthDate: { type: Date, required: true }
 }, { versionKey: false });
 
-module.exports = mongoose.model('Person', PersonSchema);
+module.exports = setupSchema('Person', PersonSchema);

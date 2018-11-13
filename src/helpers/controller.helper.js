@@ -2,6 +2,11 @@ const httpStatus = require('http-status');
 
 const controllerHelper = module.exports;
 
+/**
+ * Wraps a handler to catch any thrown errors in a standard way.
+ * @param fn
+ * @returns {Function}
+ */
 controllerHelper.wrapAsync = (fn) => {
   return async (req, res, next) => {
     try {

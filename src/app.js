@@ -2,15 +2,10 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const config = require('config');
 const express = require('express');
-const Joi = require('joi');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
 const db = require('./db');
 const errorHandler = require('./middleware/error.handler');
-
-// register custom Joi validator before requiring routes
-Joi.objectId = require('joi-objectid')(Joi);
-
 const routes = require('./routes');
 
 db()
