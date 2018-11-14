@@ -10,6 +10,7 @@ const routes = require('./routes');
 
 db()
   .then(() => {
+    console.info(`Connected to database`);
     const app = express();
     app.set('port', config.port || 3000);
     app.use(methodOverride());

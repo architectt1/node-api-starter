@@ -1,0 +1,16 @@
+version: '2'
+services:
+  database:
+    image: mongo:3.6
+    ports:
+    - "27017:27017"
+  application:
+    build: .
+    depends_on: [database]
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/seed
+      PORT: 8080
+    links:
+    - database:mongo
+    ports:
+    - "8080:8080"
