@@ -1,4 +1,5 @@
 {
   "mongodbUri": "MONGODB_URI",
-  "port": "PORT"
+  "port": "PORT",
+  "dropDb": "DROP_DB"
 }

@@ -4,5 +4,10 @@ const mongoose = require('mongoose');
 const mongodbUri = config.get('mongodbUri');
 
 module.exports = async function () {
-  return mongoose.connect(mongodbUri);
+  await mongoose.connect(mongodbUri)
+  if (['true', true].indexOf(config.dropDb) === -1) {
+    return;
+  }
+  const collections = await mongoose.connection.db.collections();
+  await Promise.all(collections.map(collection => collection.deleteMany({})));
 };
