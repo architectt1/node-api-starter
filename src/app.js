@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const db = require('./db');
 const errorHandler = require('./middleware/error.handler');
+const notFoundHandler = require('./middleware/not.found.handler');
 const routes = require('./routes');
 
 db()
@@ -18,6 +19,7 @@ db()
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(routes);
+    app.use(notFoundHandler);
     app.use(errorHandler);
     return new Promise((resolve) => {
       http.createServer(app).listen(app.get('port'), () => {
